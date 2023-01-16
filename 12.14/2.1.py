@@ -30,18 +30,19 @@ class Cargo(Carrier):
     """Реализация грузового самолёта."""
 
     def carry_military(self, items):
-        print("The plane carries ", items," military cargo")
+        # ИСПОЛЬЗОВАТЬ: следите за символами пространства, когда работаете со строками — у функции print() есть параметр sep со значением по умолчанию ' ', во время формирования итоговой строки для записи в stdout он подставляется между всеми аргументами, передаваемыми функции
+        print("The plane carries", items, "military cargo")
 
     def carry_commercial(self, items):
-        print("The plane carries ", items," commercial cargo")
+        print("The plane carries", items, "commercial cargo")
 
 
 class Passenger(Carrier):
     def carry_military(self, passengers):
-        print("The plane carries ", passengers, " military passengers")
+        print("The plane carries", passengers, "military passengers")
 
     def carry_commercial(self, passengers):
-        print("The plane carries ", passengers, " commercial passengers")
+        print("The plane carries", passengers, "commercial passengers")
 
 
 # военные и коммерческие самолёты
@@ -52,8 +53,11 @@ class Plane(ABC):
         self.carrier = Carrier
 
     @abstractmethod
+    # ИСПРАВИТЬ здесь и далее: сигнатура абстрактного метода должна соответствовать сигнатурам всех реализаций этого метода, и наоборот — это значит, что при объявлении абстрактного метода необходимо перечислить все параметры, которые должны использовать реализации
     def display_description(self):
         pass
+
+    # КОММЕНТАРИЙ: это необходимо для того, чтобы второй разработчик, пишущий свой класс, наследующий от абстрактного класса, написанного первым разработчиком, точно знал какие методы он должен реализовать — потому что классы-наследники второго разработчика могут быть использованы в коде первого или третьих разработчиков
 
     @abstractmethod
     def add_objects(self):
@@ -93,6 +97,16 @@ military1.display_description()
 military1.add_objects(12)
 military1.display_description()
 
+# ДОБАВИТЬ: больше тестов
+
 
 # ДОБАВИТЬ: после метки stdout закомментированный вывод тестового выполнения кода
 # stdout:
+
+
+# ИТОГ: в том, что касается Моста, всё хорошо — 5/6
+
+
+# СДЕЛАТЬ: совершенно напрасно вы игнорируете лекцию, посвящённую работе с git и GitHub — не нужно пытаться использовать GitHub также, как файлообменник Teams — это мизер и того не стоит: используйте преимущества систем версификации, такие как клонирование удалённого репозитория, систему коммитов, их историю и так далее — потраченное на просмотр лекции время окупится меньше чем за месяц
+
+# СДЕЛАТЬ: описания коммитов (commit message) должны передавать содержание коммита, а не бессмысленное "Add files via upload" или "ДЗ" — берите пример с моих сообщений
